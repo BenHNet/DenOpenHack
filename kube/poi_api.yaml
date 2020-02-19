@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poi-api-deployment
+  labels:
+    app: poi-api-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: poi-api
+  template:
+    metadata:
+      labels:
+        app: poi-api
+    spec:
+      containers:
+      - name: poi-api
+        image: registrykdu8597.azurecr.io/poi_api:2.0
+        ports:
+        - containerPort: 80
