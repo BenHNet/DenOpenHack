@@ -15,6 +15,13 @@ spec:
         app: tripviewer
     spec:
       containers:
+      env:
+      - name: TRIPS_API_ENDPOINT
+        value: "http://trips-svc"
+      - name: USERPROFILE_API_ENDPOINT
+        value: "http://user-profile-svc"
+      - name: NAME
+      value: "Kubernetes"
       - name: tripviewer
         image: registrykdu8597.azurecr.io/tripviewer:2.0
         ports:
