@@ -19,3 +19,17 @@ spec:
         image: registrykdu8597.azurecr.io/user_profile:2.0
         ports:
         - containerPort: 80
+        env:
+        - name: SQL_USER
+          value: "sqladminkDu8597"
+        - name: SQL_PASSWORD
+          value: "mA4xr7Tz0"
+        - name: SQL_SERVER
+          value: "sqlserverkdu8597.database.windows.net"
+        - name: SQL_DBNAME
+          value: "mydrivingDB"
+        - name: PORT
+          value: "80"
+        - name: CONFIG_FILES_PATH
+          value: "/secrets"
+          

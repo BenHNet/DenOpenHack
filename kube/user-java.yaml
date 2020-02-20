@@ -22,11 +22,11 @@ spec:
         env:
         - name: SQL_USER
           value: "sqladminkDu8597"
-       - name: SQL_PASSWORD
+        - name: SQL_PASSWORD
           value: "mA4xr7Tz0"
-       - name: SQL_SERVER
+        - name: SQL_SERVER
           value: "sqlserverkdu8597.database.windows.net"
-       - name: SQL_DBNAME
+        - name: SQL_DBNAME
           value: "mydrivingDB"
-       - name: PORT
+        - name: PORT
           value: "80"
