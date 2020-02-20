@@ -11,11 +11,11 @@ ARG IMAGE_CREATE_DATE
 ARG IMAGE_VERSION
 ARG IMAGE_SOURCE_REVISION
 
-ENV PORT=80 \
-    SQL_USER="sqladminkDu8597" \
-    SQL_PASSWORD="mA4xr7Tz0" \
-    SQL_SERVER="sqlserverkdu8597.database.windows.net" \
-    SQL_DBNAME="mydrivingDB"
+ENV PORT= \
+    SQL_USER="" \
+    SQL_PASSWORD="" \
+    SQL_SERVER="" \
+    SQL_DBNAME=""
 
 # Metadata as defined in OCI image spec annotations - https://github.com/opencontainers/image-spec/blob/master/annotations.md
 LABEL org.opencontainers.image.title="Trip Insights - User Profile (Java) API" \
