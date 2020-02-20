@@ -16,6 +16,23 @@ spec:
     spec:
       containers:
       - name: poi-api
-        image: registrykdu8597.azurecr.io/poi_api:2.0
+        image: registrykdu8597.azurecr.io/poi_api:3.0
         ports:
         - containerPort: 80
+        env:
+        - name: SQL_USER
+          value: "sqladminkDu8597"
+        - name: SQL_PASSWORD
+          value: "mA4xr7Tz0"
+        - name: SQL_SERVER
+          value: "sqlserverkdu8597.database.windows.net"
+        - name: SQL_DBNAME
+          value: "mydrivingDB"
+        - name: WEB_PORT
+          value: "80"
+        - name: WEB_SERVER_BASE_URI
+          value: "http://0.0.0.0"
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Development"
+        - name: CONFIG_FILES_PATH
+          value: "/secrets"
