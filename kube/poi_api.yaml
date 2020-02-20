@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: poi-api
-        image: registrykdu8597.azurecr.io/poi_api:3.0
+        image: registrykdu8597.azurecr.io/poi_api:4.0
         ports:
         - containerPort: 80
         env:

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: trips
-        image: registrykdu8597.azurecr.io/trips:3.0
+        image: registrykdu8597.azurecr.io/trips:4.0
         ports:
         - containerPort: 80
         env:
