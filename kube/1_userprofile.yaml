@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-java
+  name: user-profile-deployment
   labels:
-    app: user-java-deployment
+    app: user-profile-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: user-java
+      app: user-profile
   template:
     metadata:
       labels:
-        app: user-java
+        app: user-profile
     spec:
       containers:
-      - name: user-java
-        image: registrykdu8597.azurecr.io/user-java:2.0
+      - name: user-profile
+        image: registrykdu8597.azurecr.io/user_profile:3.1
         ports:
         - containerPort: 80
         env:
@@ -30,3 +30,6 @@ spec:
           value: "mydrivingDB"
         - name: PORT
           value: "80"
+        - name: CONFIG_FILES_PATH
+          value: "/secrets"
+          

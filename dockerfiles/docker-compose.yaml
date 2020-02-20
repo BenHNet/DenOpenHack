@@ -4,28 +4,28 @@ services:
     build:
       context: ../src/poi
       dockerfile: ../../dockerfiles/Dockerfile_3
-    image: registrykdu8597.azurecr.io/poi_api:4.0
+    image: registrykdu8597.azurecr.io/poi_api:4.1
 
   trips:
     build:
       context: ../src/trips
       dockerfile: ../../dockerfiles/Dockerfile_4
-    image: registrykdu8597.azurecr.io/trips:4.0
+    image: registrykdu8597.azurecr.io/trips:4.1
   
   user-java:
     build:
       context: ../src/user-java
       dockerfile: ../../dockerfiles/Dockerfile_0
-    image: registrykdu8597.azurecr.io/user-java:3.0
+    image: registrykdu8597.azurecr.io/user-java:3.1
   
   userprofile:
     build:
       context: ../src/userprofile
       dockerfile: ../../dockerfiles/Dockerfile_2
-    image: registrykdu8597.azurecr.io/user_profile:3.0
+    image: registrykdu8597.azurecr.io/user_profile:3.1
 
   tripviewer:
     build:
       context: ../src/tripviewer
       dockerfile: ../../dockerfiles/Dockerfile_1
-    image: registrykdu8597.azurecr.io/tripviewer:3.0
+    image: registrykdu8597.azurecr.io/tripviewer:3.1
