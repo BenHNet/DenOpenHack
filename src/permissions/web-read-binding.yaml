@@ -1,0 +1,13 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: frontend-user-read-access
+  namespace: frontend
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: frontend-user-read-access
+subjects:
+- kind: User
+  namespace: frontend
+  name: apidev@OTAPRD1603ops.onmicrosoft.com
