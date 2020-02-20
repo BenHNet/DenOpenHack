@@ -22,9 +22,11 @@ spec:
         - containerPort: 80
         env:
         - name: TRIPS_API_ENDPOINT
-          value: "http://trips-svc"
+          value: "http://trips-svc.api.svc.cluster.local"
         - name: USERPROFILE_API_ENDPOINT
-          value: "http://user-profile-svc"
+          value: "http://user-profile-svc.api.svc.cluster.local"
         - name: NAME
           value: "Kubernetes"
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Development"
      
