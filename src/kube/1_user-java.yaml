@@ -20,14 +20,24 @@ spec:
         image: registrykdu8597.azurecr.io/user-java:3.1
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: keyvault
+          mountPath: /kvmnt
+          readOnly: true
         env:
-        - name: SQL_USER
-          value: "sqladminkDu8597"
-        - name: SQL_PASSWORD
-          value: "mA4xr7Tz0"
-        - name: SQL_SERVER
-          value: "sqlserverkdu8597.database.windows.net"
-        - name: SQL_DBNAME
-          value: "mydrivingDB"
         - name: PORT
           value: "80"
+      volumes:
+      - name: keyvault
+        flexVolume:
+          driver: "azure/kv"
+          secretRef:
+            name: kvcreds
+          options:
+            keyvaultname: "team5keyvault"
+            keyvaultobjectnames: "SQLUSER;SQLPASSWORD;SQLSERVER;SQLDBNAME"
+            keyvaultobjecttypes: "secret;secret;secret;secret"
+            keyvaultobjectaliases: "SQL_USER;SQL_PASSWORD;SQL_SERVER;SQL_DBNAME"
+            resourcegroup: "teamResources"
+            subscriptionid: "d960cdba-b4f2-4b73-b2f8-b54c29b18332"
+            tenantid: "OTAPRD1603ops.onmicrosoft.com"
