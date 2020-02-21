@@ -25,21 +25,6 @@ spec:
         - name: keyvault
           mountPath: /kvmnt
           readOnly: true
-      volumes:
-      - name: keyvault
-        flexVolume:
-          driver: "azure/kv"
-          secretRef:
-            name: kvcreds
-          options:
-            keyvaultname: "team5keyvault"
-        - name: ASPNETCORE_ENVIRONMENT
-            keyvaultobjectnames: "SQLUSER;SQLPASSWORD;SQLSERVER;SQLDBNAME"
-            keyvaultobjecttypes: "secret;secret;secret;secret"
-            keyvaultobjectaliases: "SQL_USER;SQL_PASSWORD;SQL_SERVER;SQL_DNName"
-            resourcegroup: "teamResources"
-            subscriptionid: "d960cdba-b4f2-4b73-b2f8-b54c29b18332"
-            tenantid: "OTAPRD1603ops.onmicrosoft.com"
         env: 
         - name: WEB_PORT
           value: "80"
@@ -49,5 +34,20 @@ spec:
           value: "Development"
         - name: CONFIG_FILES_PATH
           value: "/secrets"
+      volumes:
+      - name: keyvault
+        flexVolume:
+          driver: "azure/kv"
+          secretRef:
+            name: kvcreds
+          options:
+            keyvaultname: "team5keyvault"        
+            keyvaultobjectnames: "SQLUSER;SQLPASSWORD;SQLSERVER;SQLDBNAME"
+            keyvaultobjecttypes: "secret;secret;secret;secret"
+            keyvaultobjectaliases: "SQL_USER;SQL_PASSWORD;SQL_SERVER;SQL_DNName"
+            resourcegroup: "teamResources"
+            subscriptionid: "d960cdba-b4f2-4b73-b2f8-b54c29b18332"
+            tenantid: "OTAPRD1603ops.onmicrosoft.com"
+        
          
    
