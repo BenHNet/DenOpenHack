@@ -1,43 +1,51 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-java
-  namespace: api
+  creationTimestamp: null
   labels:
     app: user-java-deployment
+  name: user-java-deployment
+  namespace: api
 spec:
   replicas: 2
   selector:
     matchLabels:
       app: user-java
+  strategy: {}
   template:
     metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      creationTimestamp: null
       labels:
         app: user-java
     spec:
       containers:
-      - name: user-java
-        image: registrykdu8597.azurecr.io/user-java:3.1
-        ports:
-        - containerPort: 80
-        volumeMounts:
-        - name: keyvault
-          mountPath: /kvmnt
-          readOnly: true
-        env:
+      - env:
         - name: PORT
           value: "80"
+        image: registrykdu8597.azurecr.io/user-java:3.1
+        name: user-java
+        ports:
+        - containerPort: 80
+        resources: {}
+        volumeMounts:
+        - mountPath: /kvmnt
+          name: keyvault
+          readOnly: true
       volumes:
-      - name: keyvault
-        flexVolume:
-          driver: "azure/kv"
+      - flexVolume:
+          driver: azure/kv
+          options:
+            keyvaultname: team5keyvault
+            keyvaultobjectaliases: SQL_USER;SQL_PASSWORD;SQL_SERVER;SQL_DBNAME
+            keyvaultobjectnames: SQLUSER;SQLPASSWORD;SQLSERVER;SQLDBNAME
+            keyvaultobjecttypes: secret;secret;secret;secret
+            resourcegroup: teamResources
+            subscriptionid: d960cdba-b4f2-4b73-b2f8-b54c29b18332
+            tenantid: OTAPRD1603ops.onmicrosoft.com
           secretRef:
             name: kvcreds
-          options:
-            keyvaultname: "team5keyvault"
-            keyvaultobjectnames: "SQLUSER;SQLPASSWORD;SQLSERVER;SQLDBNAME"
-            keyvaultobjecttypes: "secret;secret;secret;secret"
-            keyvaultobjectaliases: "SQL_USER;SQL_PASSWORD;SQL_SERVER;SQL_DBNAME"
-            resourcegroup: "teamResources"
-            subscriptionid: "d960cdba-b4f2-4b73-b2f8-b54c29b18332"
-            tenantid: "OTAPRD1603ops.onmicrosoft.com"
+        name: keyvault
+status: {}
+---

@@ -1,35 +1,41 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: insurance-deployment
-  namespace: api
+  creationTimestamp: null
   labels:
     deploy: insurance
+  name: insurance-deployment
+  namespace: api
 spec:
   replicas: 2
   selector:
     matchLabels:
       app: insurance
+  strategy: {}
   template:
     metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      creationTimestamp: null
       labels:
         app: insurance
     spec:
       containers:
-      - image: "registrykdu8597.azurecr.io/insurance:1.0"
+      - image: registrykdu8597.azurecr.io/insurance:1.0
         imagePullPolicy: Always
         name: insurance
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "100m"
-          limits:
-            memory: "3096Mi"
-            cpu: "200m"
         ports:
         - containerPort: 8081
           name: http
           protocol: TCP
+        resources:
+          limits:
+            cpu: 200m
+            memory: 3096Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+status: {}
 ---
 apiVersion: v1
 kind: Service
@@ -45,3 +51,4 @@ spec:
     name: insurance-http
     port: 80
     targetPort: 8081
+---

@@ -1,32 +1,39 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tripviewer-deployment
-  namespace: frontend
+  creationTimestamp: null
   labels:
     app: tripviewer-deployment
+  name: tripviewer-deployment
+  namespace: frontend
 spec:
   replicas: 2
   selector:
     matchLabels:
       app: tripviewer
+  strategy: {}
   template:
     metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      creationTimestamp: null
       labels:
         app: tripviewer
     spec:
       containers:
-      - name: tripviewer
+      - env:
+        - name: TRIPS_API_ENDPOINT
+          value: http://trips-svc.api.svc.cluster.local
+        - name: USERPROFILE_API_ENDPOINT
+          value: http://user-profile-svc.api.svc.cluster.local
+        - name: NAME
+          value: Kubernetes
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Development
         image: registrykdu8597.azurecr.io/tripviewer:3.1
+        name: tripviewer
         ports:
         - containerPort: 80
-        env:
-        - name: TRIPS_API_ENDPOINT
-          value: "http://trips-svc.api.svc.cluster.local"
-        - name: USERPROFILE_API_ENDPOINT
-          value: "http://user-profile-svc.api.svc.cluster.local"
-        - name: NAME
-          value: "Kubernetes"
-        - name: ASPNETCORE_ENVIRONMENT
-          value: "Development"
-     
+        resources: {}
+status: {}
+---
