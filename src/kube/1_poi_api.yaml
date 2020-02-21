@@ -34,9 +34,9 @@ spec:
           options:
             keyvaultname: "team5keyvault"
         - name: ASPNETCORE_ENVIRONMENT
-            keyvaultobjectnames: "SQLUSER;SQLPASSWORD;SQLSERVER;SQL_DBNAME"
-            keyvaultobjecttypes: "secret;secret;secret"
-            keyvaultobjectaliases: "SQL_USER;SQL_PASSWORD;SQL_SERVER"
+            keyvaultobjectnames: "SQLUSER;SQLPASSWORD;SQLSERVER;SQLDBNAME"
+            keyvaultobjecttypes: "secret;secret;secret;secret"
+            keyvaultobjectaliases: "SQL_USER;SQL_PASSWORD;SQL_SERVER;SQL_DNName"
             resourcegroup: "teamResources"
             subscriptionid: "d960cdba-b4f2-4b73-b2f8-b54c29b18332"
             tenantid: "OTAPRD1603ops.onmicrosoft.com"
