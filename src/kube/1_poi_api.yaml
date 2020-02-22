@@ -45,7 +45,7 @@ spec:
           driver: azure/kv
           options:
             keyvaultname: team5keyvault
-            keyvaultobjectaliases: SQL_USER;SQL_PASSWORD;SQL_SERVER;SQL_DNName
+            keyvaultobjectaliases: SQL_USER;SQL_PASSWORD;SQL_SERVER;SQL_DBName
             keyvaultobjectnames: SQLUSER;SQLPASSWORD;SQLSERVER;SQLDBNAME
             keyvaultobjecttypes: secret;secret;secret;secret
             resourcegroup: teamResources
