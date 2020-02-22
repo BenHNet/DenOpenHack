@@ -36,4 +36,3 @@ spec:
         - containerPort: 80
         resources: {}
 status: {}
----

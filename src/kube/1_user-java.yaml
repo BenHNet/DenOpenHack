@@ -48,4 +48,3 @@ spec:
             name: kvcreds
         name: keyvault
 status: {}
----
